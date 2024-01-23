@@ -65,7 +65,10 @@ class Remover:
             ckpt_dir = home_dir
             ckpt_name = self.meta.ckpt_name
             print(link, os.path.join(ckpt_dir, ckpt_name))
-            wget.download(link, os.path.join(ckpt_dir, ckpt_name))
+            response = requests.get(link)
+            if response.status_code == 200:
+                with open(os.path.join(ckpt_dir, ckpt_name), 'wb') as file:
+                    file.write(response.content)
         if ckpt is None:
             ckpt_dir = home_dir
             ckpt_name = self.meta.ckpt_name
