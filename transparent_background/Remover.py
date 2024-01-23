@@ -62,9 +62,9 @@ class Remover:
 
         download = False
         if link is not None:
-            print(link, os.path.join(ckpt_dir, ckpt_name))
             ckpt_dir = home_dir
             ckpt_name = self.meta.ckpt_name
+            print(link, os.path.join(ckpt_dir, ckpt_name))
             wget.download(link, os.path.join(ckpt_dir, ckpt_name))
         if ckpt is None:
             ckpt_dir = home_dir
