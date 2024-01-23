@@ -24,7 +24,7 @@ from transparent_background.InSPyReNet import InSPyReNet_SwinB
 from transparent_background.utils import *
 
 class Remover:
-    def __init__(self, mode="base", jit=False, device=None, ckpt=None, fast=None):
+    def __init__(self, mode="base", jit=False, device=None, ckpt=None, fast=None , link=None):
         """
         Args:
             mode   (str): Choose among below options
@@ -61,6 +61,8 @@ class Remover:
                 self.device = "mps:0"
 
         download = False
+        if link is not None:
+            wget.download(link, os.path.join(ckpt_dir, ckpt_name))
         if ckpt is None:
             ckpt_dir = home_dir
             ckpt_name = self.meta.ckpt_name
