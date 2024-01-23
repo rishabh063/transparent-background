@@ -69,6 +69,7 @@ class Remover:
             if response.status_code == 200:
                 with open(os.path.join(ckpt_dir, ckpt_name), 'wb') as file:
                     file.write(response.content)
+                    print(link,'saved' ,os.path.join(ckpt_dir, ckpt_name) )
         if ckpt is None:
             ckpt_dir = home_dir
             ckpt_name = self.meta.ckpt_name
@@ -85,6 +86,7 @@ class Remover:
                     download = True
 
             if download:
+                print('again downloading')
                 if 'drive.google.com' in self.meta.url:
                     gdown.download(self.meta.url, os.path.join(ckpt_dir, ckpt_name), fuzzy=True, proxy=self.meta.http_proxy)
                 elif 'github.com' in self.meta.url:
