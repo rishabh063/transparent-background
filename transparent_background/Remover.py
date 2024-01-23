@@ -7,7 +7,7 @@ import torch
 import shutil
 import warnings
 import importlib
-
+import requests
 import numpy as np
 import torch.nn.functional as F
 import torchvision.transforms as transforms
